@@ -5,6 +5,7 @@ import RegionSelector from '../region-selector/region-selector';
 import ErrorsSelector from '../errors-selector/errors-selector';
 import SeedSelector from '../seed-selector/seed-selector';
 import DataTable from '../data-table/data-table';
+import { api } from '../../utils/constants';
 
 const App = () => {
   const [region, setRegion] = useState('us');
@@ -15,7 +16,7 @@ const App = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchData = async (page) => {
-    const response = await axios.get('https://protected-hamlet-60257-554b4f88d3c2.herokuapp.com/api/data', {
+    const response = await axios.get(`${api}/api/data`, {
       params: { region, seed, errors, page },
     });
     return response.data;
@@ -51,7 +52,7 @@ const App = () => {
         <button
           className="btn btn-primary btn-md"
           onClick={() =>
-            window.open(`https://protected-hamlet-60257-554b4f88d3c2.herokuapp.com/api/export-csv?region=${region}&seed=${seed}&errors=${errors}&page=${page}`, '_blank')
+            window.open(`${api}/api/export-csv?region=${region}&seed=${seed}&errors=${errors}&page=${page}`, '_blank')
           }
         >
           Export to CSV
