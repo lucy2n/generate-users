@@ -1,20 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ErrorsSelector = ({ errors, setErrors }) => {
+    const [inputValue, setInputValue] = useState(errors.toString());
 
     const handleRangeChange = (e) => {
         const value = parseFloat(e.target.value);
         setErrors(value);
+        setInputValue(value.toString());
     };
 
     const handleInputChange = (e) => {
-        let value = parseFloat(e.target.value);
-        if (isNaN(value) || value < 0) {
-            value = 0;
-        } else if (value > 1000) {
-            value = 1000;
+        let value = e.target.value;
+
+        if (value === '') {
+            setInputValue('');
+            return;
         }
-        setErrors(value);
+
+        if (!isNaN(value)) {
+            let numericValue = parseFloat(value);
+
+            if (numericValue < 0) {
+                numericValue = 0;
+            } else if (numericValue > 1000) {
+                numericValue = 1000;
+            }
+
+            setErrors(numericValue);
+            setInputValue(value);
+        }
+    };
+
+    const handleBlur = () => {
+        if (inputValue === '' || isNaN(parseFloat(inputValue))) {
+            setErrors(0);
+            setInputValue('0');
+        } else {
+            setInputValue(parseFloat(errors).toString());
+        }
     };
 
     return (
@@ -30,13 +53,11 @@ const ErrorsSelector = ({ errors, setErrors }) => {
                 onChange={handleRangeChange}
             />
             <input
-                type="number"
+                type="text"
                 className="form-control ms-2"
-                value={errors}
-                min="0"
-                max="1000"
-                step="0.01"
+                value={inputValue}
                 onChange={handleInputChange}
+                onBlur={handleBlur}
             />
         </div>
     );
