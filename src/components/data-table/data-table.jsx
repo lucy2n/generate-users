@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap";
 const DataTable = ({data}) => {
     return (
         <Table striped bordered hover>
-            <thead>
+            <thead className="table-light">
                 <tr>
                 <th>ID</th>
                 <th>UUID</th>
@@ -14,7 +14,7 @@ const DataTable = ({data}) => {
                 <th>Phone</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="table-group-divider">
                 {data.map((item) => (
                 <tr key={item.id}>
                     <td>{item.id}</td>
