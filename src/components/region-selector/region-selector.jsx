@@ -8,7 +8,6 @@ const RegionSelector = ({ region, setRegion }) => {
         <option value="us">USA</option>
         <option value="pl">Poland</option>
         <option value="uz">Uzbekistan</option>
-        <option value="ja">Japan</option>
       </select>
     </div>
   )

@@ -51,7 +51,7 @@ const App = () => {
         <button
           className="btn btn-primary btn-md"
           onClick={() =>
-            window.open(`http://localhost:5001/api/export-csv?region=${region}&seed=${seed}&errors=${errors}&page=${page}`, '_blank')
+            window.open(`https://protected-hamlet-60257-554b4f88d3c2.herokuapp.com/api/export-csv?region=${region}&seed=${seed}&errors=${errors}&page=${page}`, '_blank')
           }
         >
           Export to CSV
