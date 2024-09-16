@@ -42,7 +42,7 @@ const App = () => {
   };
 
   return (
-    <div className="container-md d-flex flex-column">
+    <div className="container-md d-flex flex-column flex-wrap">
       <h1 className="text-primary mt-5 mb-3">Data Generator</h1>
 
       <div className="d-flex align-items-end justify-content-between mb-3">      
