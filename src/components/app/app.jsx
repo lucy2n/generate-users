@@ -15,7 +15,7 @@ const App = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchData = async (page) => {
-    const response = await axios.get('http://localhost:5001/api/data', {
+    const response = await axios.get('https://protected-hamlet-60257-554b4f88d3c2.herokuapp.com/api/data', {
       params: { region, seed, errors, page },
     });
     return response.data;
